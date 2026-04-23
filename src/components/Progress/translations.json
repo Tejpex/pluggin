@@ -1,0 +1,16 @@
+{
+  "subjects": {
+    "math": "matte",
+    "swedish": "svenska",
+    "english": "engelska"
+  },
+  "subcategories": {
+    "addition": "addition",
+    "multiplication": "multiplikation",
+    "subtraction": "subtraktion",
+    "division": "division",
+    "synonyms": "synonymer",
+    "hangman": "hänga gubben",
+    "translate": "översättning"
+  }
+}
