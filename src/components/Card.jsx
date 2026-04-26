@@ -1,21 +1,17 @@
 import styled from "styled-components"
 import PropTypes from "prop-types"
 
-export const Card = ({children, color, onClick}) => {
-  const maincolor = color ? `var(--${color})` : "var(--sunset)"
-  const shadowcolor = color ? `var(--${color}shadow)` : "var(--sunsetshadow)"
-  const hovercolor = color ? `var(--${color}hover)` : "var(--sunsethover)"
-
+export const Card = ({children, color, onClick, disabled}) => {
 
   return (
-    <GameTypeButton maincolor={maincolor} shadowcolor={shadowcolor} hovercolor={hovercolor} onClick={onClick}>
+    <GameTypeButton $color={color} onClick={onClick} disabled={disabled}>
       {children}
     </GameTypeButton>
   )
 }
 
 const GameTypeButton = styled.button`
-  background-color: ${({ maincolor }) => maincolor};
+  background-color: var(--${({ $color }) => $color});
   color: white;
   text-shadow: 1px 1px 2px black;
   font-size: 18px;
@@ -26,7 +22,7 @@ const GameTypeButton = styled.button`
   border-radius: 15px;
   border: none;
   cursor: pointer;
-  box-shadow: 4px 4px ${({ shadowcolor }) => shadowcolor};
+  box-shadow: 4px 4px var(--${({ $color }) => `${$color}shadow`});
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,8 +31,8 @@ const GameTypeButton = styled.button`
   transition: 0.2s ease;
 
   &:hover {
-    background-color: ${({ hovercolor }) => hovercolor};
-    box-shadow: 6px 6px ${({ shadowcolor }) => shadowcolor};
+    background-color: var(--${({ $color }) => `${$color}hover`});
+    box-shadow: 6px 6px var(--${({ $color }) => `${$color}shadow`});
   }
 
   &:disabled {
@@ -44,7 +40,7 @@ const GameTypeButton = styled.button`
     border: none;
 
     &:hover {
-      background-color: ${({ maincolor }) => maincolor};
+      background-color: var(--${({ $color }) => $color});
     }
   }
 
@@ -59,5 +55,6 @@ const GameTypeButton = styled.button`
 Card.propTypes = {
   onClick: PropTypes.func,
   color: PropTypes.string,
+  disabled: PropTypes.bool,
   children: PropTypes.node,
 }
