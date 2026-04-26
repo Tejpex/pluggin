@@ -26,7 +26,7 @@ export const Swedish = () => {
     setGameTypeNumber(gameNumber)
   }
 
-  if (gameTypeNumber) {
+  if (gameTypeNumber != null) {
     return (
       <SwedishGameSite>
         <HeaderDiv>
@@ -93,11 +93,7 @@ export const Swedish = () => {
             </TitleDiv>
           </HeaderDiv>
           <Choices>
-            <Card
-              color="sunset"
-              value="0"
-              onClick={(event) => handleChoice(event.target.value)}
-            >
+            <Card color="sunset" value="0" onClick={() => handleChoice(0)}>
               <ButtonTextDiv>
                 <ButtonTitle>Synonymer</ButtonTitle>
                 <ButtonSign>
@@ -111,11 +107,7 @@ export const Swedish = () => {
                 </p>
               </ProgressDiv>
             </Card>
-            <Card
-              color="sunset"
-              value="1"
-              onClick={(event) => handleChoice(event.target.value)}
-            >
+            <Card color="sunset" value="1" onClick={() => handleChoice(1)}>
               <ButtonTextDiv>
                 <ButtonTitle $font="26px">Hänga gubben</ButtonTitle>
                 <ButtonSign>

@@ -1,24 +1,30 @@
+//External imports for handling basic functionality
+import { useState } from "react"
+import { Link } from "react-router-dom"
+
+//For handling UI
 import styled from "styled-components"
+import Lottie from "lottie-react"
+import Celebrate from "../../assets/Celebrate.json"
 import { IoArrowBackCircleOutline } from "react-icons/io5"
 import { PiTranslate } from "react-icons/pi"
-import Lottie from "lottie-react"
-import { Link } from "react-router-dom"
-import { useState } from "react"
+
+//Internal imports
 import { useLanguage } from "../../contexts/LanguageContext.jsx"
 import { LanguageQuestion } from "./LanguageQuestion.jsx"
 import { Footer } from "../Footer"
-import Celebrate from "../../assets/Celebrate.json"
+import { Card } from "../Card.jsx"
 
 export const English = () => {
   const { englishGame, celebrateLottie } = useLanguage()
-  
+
   const [gameTypeNumber, setGameTypeNumber] = useState()
 
   const handleChoice = (type) => {
     setGameTypeNumber(type)
   }
 
-  if (gameTypeNumber) {
+  if (gameTypeNumber != null) {
     return (
       <EnglishGameSite>
         <HeaderDiv>
@@ -77,9 +83,10 @@ export const English = () => {
             </TitleDiv>
           </HeaderDiv>
           <Choices>
-            <GameTypeButton
+            <Card
+              color="forest"
               value="0"
-              onClick={(event) => handleChoice(event.target.value)}
+              onClick={() => handleChoice(0)}
             >
               <ButtonTextDiv>
                 <ButtonTitle>Översätt</ButtonTitle>
@@ -93,7 +100,7 @@ export const English = () => {
                   {englishGame[0].score}/{englishGame[0].levelScore}
                 </p>
               </ProgressDiv>
-            </GameTypeButton>
+            </Card>
           </Choices>
         </EnglishGameSite>
         <Footer />
@@ -201,49 +208,6 @@ const Choices = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 580px;
-  }
-`
-
-
-const GameTypeButton = styled.button`
-  background-color: var(--forest);
-  color: white;
-  text-shadow: 1px 1px 2px black;
-  font-size: 18px;
-  width: 270px;
-  height: 70px;
-  margin: 10px auto;
-  padding: 20px 0;
-  border-radius: 15px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 4px 4px var(--forestshadow);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  &:hover {
-    background-color: var(--foresthover);
-    box-shadow: 6px 6px var(--forestshadow);
-    transition: 0.2s ease;
-  }
-
-  &:disabled {
-    cursor: default;
-    border: none;
-
-    &:hover {
-      background-color: var(--forest);
-    }
-  }
-
-  @media (min-width: 700px) {
-    width: 270px;
-    height: 120px;
-    padding: 10px 20px;
-    gap: 20px;
   }
 `
 

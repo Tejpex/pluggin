@@ -12,6 +12,7 @@ import { IoArrowBackCircleOutline } from "react-icons/io5"
 import { useMath } from "../../contexts/MathContext"
 import { MathQuestion } from "./MathQuestion"
 import { Footer } from "../Footer"
+import { Card } from "../Card.jsx"
 
 export const Math = () => {
   const { mathGame, celebrateLottie } = useMath()
@@ -22,7 +23,7 @@ export const Math = () => {
     setGameTypeNumber(type)
   }
 
-  if (gameTypeNumber) {
+  if (gameTypeNumber != null) {
     return (
       <MathGameSite>
         <HeaderDiv>
@@ -75,10 +76,7 @@ export const Math = () => {
             </TitleDiv>
           </HeaderDiv>
           <Choices>
-            <GameTypeButton
-              value="0"
-              onClick={(event) => handleChoice(event.target.value)}
-            >
+            <Card color="ocean" value="0" onClick={() => handleChoice(0)}>
               <ButtonTextDiv>
                 <ButtonTitle>Addition</ButtonTitle>
                 <ButtonSign>+</ButtonSign>
@@ -87,11 +85,8 @@ export const Math = () => {
                 <p>Nivå {mathGame[0].level}</p>
                 {mathGame[0].score}/{mathGame[0].levelScore}
               </ProgressDiv>
-            </GameTypeButton>
-            <GameTypeButton
-              value="1"
-              onClick={(event) => handleChoice(event.target.value)}
-            >
+            </Card>
+            <Card color="ocean" value="1" onClick={() => handleChoice(1)}>
               <ButtonTextDiv>
                 <ButtonTitle>Subtraktion</ButtonTitle>
                 <ButtonSign>-</ButtonSign>
@@ -100,11 +95,8 @@ export const Math = () => {
                 <p>Nivå {mathGame[1].level}</p>
                 {mathGame[1].score}/{mathGame[1].levelScore}
               </ProgressDiv>
-            </GameTypeButton>
-            <GameTypeButton
-              value="2"
-              onClick={(event) => handleChoice(event.target.value)}
-            >
+            </Card>
+            <Card color="ocean" value="2" onClick={() => handleChoice(2)}>
               <ButtonTextDiv>
                 <ButtonTitle>Multiplikation</ButtonTitle>
                 <MultiplySign>*</MultiplySign>
@@ -113,11 +105,8 @@ export const Math = () => {
                 <p>Nivå {mathGame[2].level}</p>
                 {mathGame[2].score}/{mathGame[2].levelScore}
               </ProgressDiv>
-            </GameTypeButton>
-            <GameTypeButton
-              value="3"
-              onClick={(event) => handleChoice(event.target.value)}
-            >
+            </Card>
+            <Card color="ocean" value="3" onClick={() => handleChoice(3)}>
               <ButtonTextDiv>
                 <ButtonTitle>Division</ButtonTitle>
                 <ButtonSign>÷</ButtonSign>
@@ -126,7 +115,7 @@ export const Math = () => {
                 <p>Nivå {mathGame[3].level}</p>
                 {mathGame[3].score}/{mathGame[3].levelScore}
               </ProgressDiv>
-            </GameTypeButton>
+            </Card>
           </Choices>
         </MathGameSite>
         <Footer />
@@ -233,48 +222,6 @@ const Choices = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 580px;
-  }
-`
-
-const GameTypeButton = styled.button`
-  background-color: var(--ocean);
-  color: white;
-  text-shadow: 1px 1px 2px black;
-  font-size: 18px;
-  width: 270px;
-  height: 70px;
-  margin: 10px auto;
-  padding: 20px 0;
-  border-radius: 15px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 4px 4px var(--oceanshadow);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  &:hover {
-    background-color: var(--oceanhover);
-    box-shadow: 6px 6px var(--oceanshadow);
-    transition: 0.2s ease;
-  }
-
-  &:disabled {
-    cursor: default;
-    border: none;
-
-    &:hover {
-      background-color: var(--ocean);
-    }
-  }
-
-  @media (min-width: 700px) {
-    width: 270px;
-    height: 120px;
-    padding: 30px 20px;
-    gap: 20px;
   }
 `
 

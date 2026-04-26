@@ -1,21 +1,21 @@
 import styled from "styled-components"
 import PropTypes from "prop-types"
 
-export const Card = ({children, color}) => {
-  const mainColor = `var(--${color})` || "var(--sunset)"
-  const shadowColor = `var(--${color}shadow)` || "var(--sunsetshadow)"
-  const hoverColor = `var(--${color}hover)` || "var(--sunsethover)"
+export const Card = ({children, color, onClick}) => {
+  const maincolor = color ? `var(--${color})` : "var(--sunset)"
+  const shadowcolor = color ? `var(--${color}shadow)` : "var(--sunsetshadow)"
+  const hovercolor = color ? `var(--${color}hover)` : "var(--sunsethover)"
 
 
   return (
-    <GameTypeButton mainColor={mainColor} shadowColor={shadowColor} hoverColor={hoverColor}>
+    <GameTypeButton maincolor={maincolor} shadowcolor={shadowcolor} hovercolor={hovercolor} onClick={onClick}>
       {children}
     </GameTypeButton>
   )
 }
 
 const GameTypeButton = styled.button`
-  background-color: ${({ mainColor }) => mainColor};
+  background-color: ${({ maincolor }) => maincolor};
   color: white;
   text-shadow: 1px 1px 2px black;
   font-size: 18px;
@@ -26,7 +26,7 @@ const GameTypeButton = styled.button`
   border-radius: 15px;
   border: none;
   cursor: pointer;
-  box-shadow: 4px 4px ${({ shadowColor }) => shadowColor};
+  box-shadow: 4px 4px ${({ shadowcolor }) => shadowcolor};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,8 +35,8 @@ const GameTypeButton = styled.button`
   transition: 0.2s ease;
 
   &:hover {
-    background-color: ${({ hoverColor }) => hoverColor};
-    box-shadow: 6px 6px ${({ shadowColor }) => shadowColor};
+    background-color: ${({ hovercolor }) => hovercolor};
+    box-shadow: 6px 6px ${({ shadowcolor }) => shadowcolor};
   }
 
   &:disabled {
@@ -44,7 +44,7 @@ const GameTypeButton = styled.button`
     border: none;
 
     &:hover {
-      background-color: ${({ mainColor }) => mainColor};
+      background-color: ${({ maincolor }) => maincolor};
     }
   }
 
@@ -57,6 +57,7 @@ const GameTypeButton = styled.button`
 `
 
 Card.propTypes = {
+  onClick: PropTypes.func,
   color: PropTypes.string,
   children: PropTypes.node,
 }

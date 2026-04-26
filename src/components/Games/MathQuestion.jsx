@@ -314,5 +314,5 @@ const FeedbackLottie = styled.div`
 
 MathQuestion.propTypes = {
   focusRef: PropTypes.any,
-  type: PropTypes.string,
+  type: PropTypes.number,
 }
