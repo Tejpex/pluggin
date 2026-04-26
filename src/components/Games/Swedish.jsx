@@ -15,7 +15,7 @@ import { useLanguage } from "../../contexts/LanguageContext.jsx"
 import { LanguageQuestion } from "./LanguageQuestion.jsx"
 import { Hangman } from "./Hangman.jsx"
 import { Footer } from "../Footer"
-import { GameTypeButton } from "../Cards.jsx"
+import { Card } from "../Card.jsx"
 
 export const Swedish = () => {
   const { swedishGame, celebrateLottie } = useLanguage()
@@ -93,7 +93,7 @@ export const Swedish = () => {
             </TitleDiv>
           </HeaderDiv>
           <Choices>
-            <GameTypeButton
+            <Card
               color="sunset"
               value="0"
               onClick={(event) => handleChoice(event.target.value)}
@@ -110,8 +110,8 @@ export const Swedish = () => {
                   {swedishGame[0].score}/{swedishGame[0].levelScore}
                 </p>
               </ProgressDiv>
-            </GameTypeButton>
-            <GameTypeButton
+            </Card>
+            <Card
               color="sunset"
               value="1"
               onClick={(event) => handleChoice(event.target.value)}
@@ -128,7 +128,7 @@ export const Swedish = () => {
                   {swedishGame[1].score}/{swedishGame[1].levelScore}
                 </p>
               </ProgressDiv>
-            </GameTypeButton>
+            </Card>
           </Choices>
         </SwedishGameSite>
         <Footer />
